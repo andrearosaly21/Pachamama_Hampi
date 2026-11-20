@@ -456,8 +456,79 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
           font=("Arial", 13, "bold"),
           bg="white",
           fg="#2D6A4F",
+      ).pack(anchor="w")                                                                                       ++++++++
+  if "image" in trat and trat["image"]:
+    foto = self.cargar_imagen_segura(trat["image"], tamaño=(180, 130))
+    if foto:
+      lbl_img = tk.Label(card, image=foto, bg="white")
+      lbl_img.image = foto
+      lbl_image.pack(anchor="w", pady=(8, 6))
+  datos_ficha = [
+    (txt["científico"], trat.get("nombra_científico", "")),
+    (txt["familia"], trat.get("familia_botánica", "")),
+    (txt["parte"], trat.get("parte_utilizada", {}).get(self.idioma, "")),
+  ]
+
+  for etiqueta, valor in datos_ficha:
+    if valor:
+      tk:Label(
+        card,
+        text=f"{etiqueta} {valor}",
+        font=("Arial", 10),
+        bg="white",
+        fg="#2D3748",
+        anchor="w",
+        wraplength=440,
+        justify="left",
+      ).pack(anchor="w", pady=1)
+  uso_texto = trat.get("uso", {}).get(self.idioma, "")
+  if uso_texto:
+    tk.Label(
+        card,
+        text=txt["uso],
+        font=("Arial", 10, "bold"),
+        bg="white",
+        fg="#1B4332",
+        anchor="w",
+      ).pack(anchor="w", pady=(8, 2))
+
+      tk.Label(
+          card,
+          text=uso_texto,
+          font=("Arial", 10),
+          bg="white",
+          fg="#4A5568",
+          anchor="w",
+          wraplength=440,
+          justify="left",
       ).pack(anchor="w")
-          
+  aviso_texto = trat.get("advertencias", {}).get(self.idioma, "")
+  if aviso_texto:
+    tk.Label(
+        card,
+        text=txt["alerta"],
+        font=("Arial", 10, "bold"),
+        bg="white",
+        fg="#9B2C2C",
+        anchor="w",
+    ).pack(anchor="w", pady=(8, 2))
+
+    tk.Label(
+        card,
+        text=aviso_texto,
+        font=("Arial, 10),
+        bg="white",
+        fg="#9B2C2C",
+        anchor="w",
+        wraplength=440,
+        justify="left",
+    ).pack(anchor="w"
+    
+      
+        
+        
+  
+    
     
           
         

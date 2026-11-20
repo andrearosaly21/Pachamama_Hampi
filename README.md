@@ -182,23 +182,23 @@
   from tkinter import messagebox
   import json
   import os
-  from PIL imrt Image, ImageTk
+  from PIL import Image, ImageTk
 
   class SoftwareHampiApp: #
-    def _init_(self, root):
-    self.root =root
-    self.root.title("Pachamama Hampi")
-    self.root.geometry("540*680")
-    self.root.configure(bg="#F4F6F4")
+    def __init__(self, root):
+      self.root =root
+      self.root.title("Pachamama Hampi")
+      self.root.geometry("540x680")
+      self.root.configure(bg="#F4F6F4")
 
-    self.idioma = "es"
-    self.enfermedad_actual =None #
-    self.images_cache = {} #
+      self.idioma = "es"
+      self.enfermedad_actual =None #
+      self.images_cache = {} #
 
-    self.ruta_base = os.path.dirname(os.path.abspath(_file_))
-    sefl.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
+      self.ruta_base = os.path.dirname(os.path.abspath(__file__))
+      sefl.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
 
-    self.ui_textos = {
+      self.ui_textos = {
       "es": {
           "titulo": "Recurso Medicinal", #
           "subtitulo": "Seleciona una enfermedad",
@@ -215,7 +215,7 @@
           "subtitulo": "Select a condition",
           "volver": "Back to conditions",
           "científico": "Scientific name:",
-          "familia": "Botanical family":,
+          "familia": "Botanical family:",
           "parte": "Part used:",
           "uso": "Use and preparation:",
           "alerta": "Precautions:",
@@ -245,7 +245,7 @@
       },
     }
 
-    Self.barra_superior = tk.Frame(self.root, bg="#1B4332", pady=10)
+    self.barra_superior = tk.Frame(self.root, bg="#1B4332", pady=10)
     self.barra_superior.pack(fill="x")
     self.actualizar_barra_idiomas()
 
@@ -255,9 +255,9 @@
     self.lbl_aviso = tk.Label(
         self.root,
         text=self.ui_textos[self.idioma]["aviso_legal"],
-        font=("Arial",8, "Italic"),
-        bg="#E8ECE8",
-        fg="#4A5568#,
+        font=("Arial", 8, "italic"),
+        bg:"#E8ECE8",
+        fg="#4A5568",
         pady=6,
         wraplength=500,
     )
@@ -265,14 +265,14 @@
 
     self.mostrar_lista_enfermedades()
 
-  f cargar_datos(self, ruta):
+  def cargar_datos(self, ruta):
      if not os.path.exists(ruta):
          messagebox.showerror("Error", f"No se encontró el archivo:\n{ruta}")
-         return {"enfermedades": []}
+         return {"enfermedades o dolencias": []}                                                          #
       with open(ruta, "r", encoding="utf-8") as f:
          return json.load(f)
 
-  f actualizar_barra_idiomas(self):
+  def actualizar_barra_idiomas(self):
       for widget in self.barra_superior.winfo_children():
           widget.destroy()
 
@@ -288,7 +288,7 @@
             self.barra_superior,
             text=nombre,
             font=("Arial", 10, "bold"),
-            bg="#D8F3DC" if activo else "2D6A4F",
+            bg="#D8F3DC" if activo else "#2D6A4F",
             fg="#1B4332" if activo else "white",
             relief= "flat",
             padx=10,
@@ -297,7 +297,7 @@
             command=lambda c=cod: self.cambiar_idioma(c),
         ).pack(side="left", padx=8)
 
-  f cambiar_idioma(self, nuevo_idioma):
+  def cambiar_idioma(self, nuevo_idioma):
     self.idioma = nuevo_idioma
     self.actualizar_barra_idiomas()
     self.lbl_aviso.config(text=self.ui_textos[self.idioma]["aviso_legal"])
@@ -307,15 +307,15 @@
     else:
         self.mostar_lista_enfermedad()
 
-  f limpiar_contenedor(self):
+  def limpiar_contenedor(self):
     for widget in self.contenedor.winfo_children():
         widget.destroy()
 
-  f cargar_imagen_segura(self, ruta_relativa, tamaño=(180, 130):
+  def cargar_imagen_segura(self, ruta_relativa, tamaño=(180, 130):
     ruta_completa = os.path.join(self.ruta_base, ruta_relativa)
     clave = f"{ruta_completa}_{tamaño[0]}*{tamaño[1]}"
     if clave in self.imagenes_cache:
-        return self.imagenes_cache[clave]
+        return self.imagenes_cache[clave]                                                             #
 
     if os.path.exist(ruta_completa):
         img = Image.open(ruta_completa).resize(
@@ -326,7 +326,7 @@
         return foto
     return None
 
-  f mostrar_lista_enfermedades(self):
+  def mostrar_lista_enfermedades(self):
     self.enfermedad_actual = None
     self.limpiar_contenedor()
     txt = self.ui_textos[self.idioma]
@@ -347,7 +347,7 @@
         fg="#52796F",
     ).pack(pady=(0, 15))
 
-    for enf in self.db["enfermedades"]:
+    for enf in self.db["enfermedades o dolencias"]:
         tarjeta = tk.Frame(
             self.contenedor,
             bg="white",
@@ -381,13 +381,13 @@
       )
       lbl_desc.pack(fill="x", pady=(4,0)
 
-      for w in (tarjeta, lbl_nom lbl_desc):
+      for w in (tarjeta, lbl_nom, lbl_desc):
           w.bind(
-              "<Btton-1>",
+              "<Button-1>",
               lambda e, item=enf: self.mostrar_detalle_enfermedades(item),
           )
 
-f mostrar_detalle_enfermedad(self, enfermedad):
+def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
   self.enfermedad_actual = enfermedad
   self.limpiar_contenedor()
   txt = self.ui_textos[self.idioma]

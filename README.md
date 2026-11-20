@@ -3,7 +3,7 @@
 {
   "enfermedades o dolencias": [
     {
-      "id": "enfe_1",
+      "id": "enf_1",
         "nombres": {
           "es": "Fiebre",
             "en": "Fever",
@@ -121,10 +121,10 @@
             "nombre_científico": "Minthostachys mollis",
             "familia_botánica": "Lamiaceae",
             "parte_utilizada": {
-              "es": "Hojas",
-              "en": "Leaves",
-              "qu": "Raphi",
-             "shp": "Pei"
+                "es": "Hojas",
+                "en": "Leaves",
+                "qu": "Raphi",
+                "shp": "Pei"
             },
             "uso": {
               "es": "Una infusión o mate caliente de hojas para calmar la garganta.",
@@ -193,10 +193,10 @@
 
       self.idioma = "es"
       self.enfermedad_actual =None #
-      self.images_cache = {} #
+      self.imagenes_cache = {} #
 
       self.ruta_base = os.path.dirname(os.path.abspath(__file__))
-      sefl.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
+      self.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
 
       self.ui_textos = {
       "es": {
@@ -211,7 +211,7 @@
           "aviso_legal": "Aviso: Información educativa y cultural. No reemplaza la atención médica.",
       },
       "en": {
-          "titulo": "Medicinal resource" #
+          "titulo": "Medicinal resource", #
           "subtitulo": "Select a condition",
           "volver": "Back to conditions",
           "científico": "Scientific name:",
@@ -237,7 +237,7 @@
           "subtitulo": "Isin katowe rao oinnoxon",
           "volver": "Kawe",
           "científico": "Onanti jane:",
-          "familia": "Rao kaibo:,
+          "familia": "Rao kaibo:",
           "parte": "Akinati tsekati:",
           "uso": "Jawekeska akin akati:",
           "alerta": "Oinbires akawe:",
@@ -249,14 +249,14 @@
     self.barra_superior.pack(fill="x")
     self.actualizar_barra_idiomas()
 
-    self.contenedor = tk.Frame(self.root, bg:"#F4F6F4")
+    self.contenedor = tk.Frame(self.root, bg="#F4F6F4")
     self.contenedor.pack(fill="both", expand=True, padx=20, pady=10)
 
     self.lbl_aviso = tk.Label(
         self.root,
         text=self.ui_textos[self.idioma]["aviso_legal"],
         font=("Arial", 8, "italic"),
-        bg:"#E8ECE8",
+        bg="#E8ECE8",
         fg="#4A5568",
         pady=6,
         wraplength=500,
@@ -268,23 +268,23 @@
   def cargar_datos(self, ruta):
      if not os.path.exists(ruta):
          messagebox.showerror("Error", f"No se encontró el archivo:\n{ruta}")
-         return {"enfermedades o dolencias": []}                                                          #
-      with open(ruta, "r", encoding="utf-8") as f:
+         return {"enfermedades o dolencias": []}
+     with open(ruta, "r", encoding="utf-8") as f:
          return json.load(f)
 
   def actualizar_barra_idiomas(self):
       for widget in self.barra_superior.winfo_children():
           widget.destroy()
-
+      
       idiomas = [
           ("es", "Español"),
           ("en", "English"),
           ("qu", "Runasimi"),
           ("shp", "Shipibo-Konibo"),
-    ]
-    for cod, nombre in idiomas:
-        activo = self.idioma == cod
-        tk.Button(
+      ]
+      for cod, nombre in idiomas:
+          activo = self.idioma == cod
+          tk.Button(
             self.barra_superior,
             text=nombre,
             font=("Arial", 10, "bold"),
@@ -305,24 +305,24 @@
     if self.enfermedad_actual:
         self.mostrar_detalle_enfermedad(self.enfermedad_actual)
     else:
-        self.mostar_lista_enfermedad()
+        self.mostar_lista_enfermedades()
 
   def limpiar_contenedor(self):
     for widget in self.contenedor.winfo_children():
         widget.destroy()
 
-  def cargar_imagen_segura(self, ruta_relativa, tamaño=(180, 130):
+  def cargar_imagen_segura(self, ruta_relativa, tamaño=(180, 130)):
     ruta_completa = os.path.join(self.ruta_base, ruta_relativa)
     clave = f"{ruta_completa}_{tamaño[0]}*{tamaño[1]}"
     if clave in self.imagenes_cache:
-        return self.imagenes_cache[clave]                                                             #
+        return self.imagenes_cache[clave]                                                             #        ****
 
-    if os.path.exist(ruta_completa):
+    if os.path.exisst(ruta_completa):
         img = Image.open(ruta_completa).resize(
             tamaño, Image.Resampling.LANCZOS
         )
         foto = ImageTk.PhotoImage(img)
-        self.imagenes_cache[cache] = foto
+        self.imagenes_cache[clave] = foto
         return foto
     return None
 
@@ -356,8 +356,8 @@
             padx=15,
             pady=12,
             cursor="hand2",
-      )
-      tarjeta.pack(fill="x", pady=6)
+    )
+    tarjeta.pack(fill="x", pady=6)
 
       lbl_nom = tk.Label(
           tarjeta,
@@ -366,8 +366,8 @@
           bg="white",
           fg="#1B4332",
           anchor="w",
-      )
-      lbl_nom.pack(fill="x")
+    )
+    lbl_nom.pack(fill="x")
 
       lbl_desc = tk.Label(
           tarjeta,
@@ -375,13 +375,13 @@
           font=("Arial", 10),
           bg="white",
           fg="#4A5568",
-          anchor="w"
+          anchor="w",
           wraplength=460,
           justify="left",
-      )
-      lbl_desc.pack(fill="x", pady=(4,0)
+    )
+    lbl_desc.pack(fill="x", pady=(4,0))
 
-      for w in (tarjeta, lbl_nom, lbl_desc):
+    for w in (tarjeta, lbl_nom, lbl_desc):
           w.bind(
               "<Button-1>",
               lambda e, item=enf: self.mostrar_detalle_enfermedades(item),
@@ -395,7 +395,7 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
   tk.Button(
       self.contenedor,
       text=txt["volver"],
-      font="("Arial", 10, "bold"),
+      font=("Arial", 10, "bold"),
       bg="#D8F3DC",
       fg="#1B4332",
       relief="flat",
@@ -403,7 +403,7 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
       pady=4,
       cursor="hand2",
       command=self.mostrar_lista_enfermedades,
-  ).pack(anchor="w", pady=(0, 10)
+  ).pack(anchor="w", pady=(0, 10))
 
   tk.Label(
       self.contenedor,
@@ -429,7 +429,7 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
   scrollbar = tk.Scrollbar(
       self.contenedor, orient="vertical", command=canvas.yview
   )
-  scroll_frame = tk.Frame(canvas, bg="F4F6F4")
+  scroll_frame = tk.Frame(canvas, bg="#F4F6F4")
 
   scroll_frame.bind(
       "<Configure>",
@@ -449,7 +449,7 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
 
 
       reg_nombre = trat["region"][self.idioma]
-      planta_nombre = trar["planta"][self.idioma]
+      planta_nombre = trat["planta"][self.idioma]
       tk.Label(
           card,
           text=f"{planta_nombre} - {reg_nombre}",

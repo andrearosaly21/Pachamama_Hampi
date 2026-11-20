@@ -305,7 +305,7 @@
     if self.enfermedad_actual:
         self.mostrar_detalle_enfermedad(self.enfermedad_actual)
     else:
-        self.mostar_lista_enfermedades()
+        self.mostrar_lista_enfermedades()
 
   def limpiar_contenedor(self):
     for widget in self.contenedor.winfo_children():
@@ -317,7 +317,7 @@
     if clave in self.imagenes_cache:
         return self.imagenes_cache[clave]                                                             #        ****
 
-    if os.path.exisst(ruta_completa):
+    if os.path.exists(ruta_completa):
         img = Image.open(ruta_completa).resize(
             tamaño, Image.Resampling.LANCZOS
         )
@@ -387,10 +387,10 @@
               lambda e, item=enf: self.mostrar_detalle_enfermedades(item),
           )
 
-def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
-  self.enfermedad_actual = enfermedad
-  self.limpiar_contenedor()
-  txt = self.ui_textos[self.idioma]
+    def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
+    self.enfermedad_actual = enfermedad
+    self.limpiar_contenedor()
+    txt = self.ui_textos[self.idioma]
 
   tk.Button(
       self.contenedor,
@@ -457,72 +457,73 @@ def mostrar_detalle_enfermedades(self, enfermedad):                             
           bg="white",
           fg="#2D6A4F",
       ).pack(anchor="w")                                                                                       ++++++++
-  if "image" in trat and trat["image"]:
+  if "imagen" in trat and trat["imagen"]:
     foto = self.cargar_imagen_segura(trat["image"], tamaño=(180, 130))
     if foto:
       lbl_img = tk.Label(card, image=foto, bg="white")
       lbl_img.image = foto
-      lbl_image.pack(anchor="w", pady=(8, 6))
+      lbl_imag.pack(anchor="w", pady=(8, 6))
   datos_ficha = [
-    (txt["científico"], trat.get("nombra_científico", "")),
-    (txt["familia"], trat.get("familia_botánica", "")),
-    (txt["parte"], trat.get("parte_utilizada", {}).get(self.idioma, "")),
-  ]
+          (txt["científico"], trat.get("nombre_científico", "")),
+          (txt["familia"], trat.get("familia_botánica", "")),
+          (txt["parte"], trat.get("parte_utilizada", {}).get(self.idioma, "")),
+      ]
 
-  for etiqueta, valor in datos_ficha:
-    if valor:
-      tk:Label(
-        card,
-        text=f"{etiqueta} {valor}",
-        font=("Arial", 10),
-        bg="white",
-        fg="#2D3748",
-        anchor="w",
-        wraplength=440,
-        justify="left",
-      ).pack(anchor="w", pady=1)
-  uso_texto = trat.get("uso", {}).get(self.idioma, "")
-  if uso_texto:
-    tk.Label(
-        card,
-        text=txt["uso],
-        font=("Arial", 10, "bold"),
-        bg="white",
-        fg="#1B4332",
-        anchor="w",
+      for etiqueta, valor in datos_ficha:
+        if valor:
+          tk.Label(
+              card,
+              text=f"{etiqueta} {valor}",
+              font=("Arial", 10),
+              bg="white",
+              fg="#2D3748",
+              anchor="w",
+              wraplength=440,
+              justify="left",
+        ).pack(anchor="w", pady=1)
+      uso_texto = trat.get("uso", {}).get(self.idioma, "")
+      if uso_texto:
+        tk.Label(
+            card,
+            text=txt["uso"],
+            font=("Arial", 10, "bold"),
+            bg="white",
+            fg="#1B4332",
+            anchor="w",
+        ).pack(anchor="w", pady=(8, 2))
+
+        tk.Label(
+            card,
+            text=uso_texto,
+            font=("Arial", 10),
+            bg="white",
+            fg="#4A5568",
+            anchor="w",
+            wraplength=440,
+            justify="left",
+        ).pack(anchor="w")
+        
+    aviso_texto = trat.get("advertencias", {}).get(self.idioma, "")
+    if aviso_texto:
+      tk.Label(
+          card,
+          text=txt["alerta"],
+          font=("Arial", 10, "bold"),
+          bg="white",
+          fg="#9B2C2C",
+          anchor="w",
       ).pack(anchor="w", pady=(8, 2))
 
       tk.Label(
           card,
-          text=uso_texto,
+          text=aviso_texto,
           font=("Arial", 10),
           bg="white",
-          fg="#4A5568",
+          fg="#9B2C2C",
           anchor="w",
           wraplength=440,
           justify="left",
       ).pack(anchor="w")
-  aviso_texto = trat.get("advertencias", {}).get(self.idioma, "")
-  if aviso_texto:
-    tk.Label(
-        card,
-        text=txt["alerta"],
-        font=("Arial", 10, "bold"),
-        bg="white",
-        fg="#9B2C2C",
-        anchor="w",
-    ).pack(anchor="w", pady=(8, 2))
-
-    tk.Label(
-        card,
-        text=aviso_texto,
-        font=("Arial, 10),
-        bg="white",
-        fg="#9B2C2C",
-        anchor="w",
-        wraplength=440,
-        justify="left",
-    ).pack(anchor="w"
     
       
         

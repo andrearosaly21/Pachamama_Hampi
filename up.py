@@ -123,7 +123,7 @@ class SoftwareHampiApp: #
     self.lbl_aviso.config(text=self.ui_textos[self.idioma]["aviso_legal"])
 
     if self.enfermedad_actual:
-      self.mostrar_detalle_enfermedads(self.enfermedad_actual)
+      self.mostrar_detalle_enfermedades(self.enfermedad_actual)
     else:
       self.mostrar_lista_enfermedades()
 
@@ -135,7 +135,7 @@ class SoftwareHampiApp: #
     ruta_completa = os.path.join(self.ruta_base, ruta_relativa)
     clave = f"{ruta_completa}_{tamaño[0]}*{tamaño[1]}"
     if clave in self.imagenes_cache:
-      return self.imagenes_cache[clave]                                                             #        ****
+      return self.imagenes_cache[clave]                                                             
 
     if os.path.exists(ruta_completa):
       img = Image.open(ruta_completa).resize(
@@ -151,21 +151,21 @@ class SoftwareHampiApp: #
     self.limpiar_contenedor()
     txt = self.ui_textos[self.idioma]
 
-      tk.Label(
-        self.contenedor,
-        text=txt["titulo"],
-        font=("Arial", 18, "bold"),
-        bg="#F4F6F4",
-        fg="#1B4332",
-      ).pack(pady=(5, 2))
+    tk.Label(
+      self.contenedor,
+      text=txt["titulo"],
+      font=("Arial", 18, "bold"),
+      bg="#F4F6F4",
+      fg="#1B4332",
+    ).pack(pady=(5, 2))
 
-      tk.Label(
-        self.contenedor,
-        text=txt["subtitulo"],
-        font=("Ariel", 10),
-        bg="#F4F6F4",
-        fg="#52796F",
-      ).pack(pady=(0, 15))
+    tk.Label(
+      self.contenedor,
+      text=txt["subtitulo"],
+      font=("Arial", 10),
+      bg="#F4F6F4",
+      fg="#52796F",
+    ).pack(pady=(0, 15))
 
     for enf in self.db["enfermedades o dolencias"]:
       tarjeta = tk.Frame(
@@ -201,14 +201,14 @@ class SoftwareHampiApp: #
       )
       lbl_desc.pack(fill="x", pady=(4,0))
 
-    for w in (tarjeta, lbl_nom, lbl_desc):
-      w.bind(
-        "<Button-1>",
-        lambda e, item=enf: 
-          self.mostrar_detalle_enfermedades(item),                                                    aqui
-      )
+      for w in (tarjeta, lbl_nom, lbl_desc):
+        w.bind(
+          "<Button-1>",
+          lambda e, item=enf: 
+            self.mostrar_detalle_enfermedades(item),                                                    
+        )
 
-  def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
+  def mostrar_detalle_enfermedades(self, enfermedad):                                                        
     self.enfermedad_actual = enfermedad
     self.limpiar_contenedor()
     txt = self.ui_textos[self.idioma]
@@ -299,7 +299,7 @@ class SoftwareHampiApp: #
         font=("Arial", 13, "bold"),
         bg="white",
         fg="#2D6A4F",
-      ).pack(anchor="w")                                                                                       ++++++++
+      ).pack(anchor="w")                                                                                       
       if "imagen" in trat and trat["imagen"]:
         foto = self.cargar_imagen_segura(
           trat["imagen"], 
@@ -315,8 +315,8 @@ class SoftwareHampiApp: #
         (txt["parte"], trat.get("parte_utilizada", {}).get(self.idioma, "")),
       ]
 
-      for etiqueta, valor in datos_ficha:
-        if valor:
+    for etiqueta, valor in datos_ficha:
+      if valor:
         tk.Label(
           card,
           text=f"{etiqueta} {valor}",

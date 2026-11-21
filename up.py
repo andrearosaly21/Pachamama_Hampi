@@ -144,7 +144,6 @@ class SoftwareHampiApp: #
       foto = ImageTk.PhotoImage(img)
       self.imagenes_cache[clave] = foto
       return foto
-      return None
 
   def mostrar_lista_enfermedades(self):
     self.enfermedad_actual = None
@@ -213,36 +212,36 @@ class SoftwareHampiApp: #
     self.limpiar_contenedor()
     txt = self.ui_textos[self.idioma]
 
-      tk.Button(
-        self.contenedor,
-        text=txt["volver"],
-        font=("Arial", 10, "bold"),
-        bg="#D8F3DC",
-        fg="#1B4332",
-        relief="flat",
-        padx=10,
-        pady=4,
-        cursor="hand2",
-        command=self.mostrar_lista_enfermedades,
-      ).pack(anchor="w", pady=(0, 10))
+    tk.Button(
+      self.contenedor,
+      text=txt["volver"],
+      font=("Arial", 10, "bold"),
+      bg="#D8F3DC",
+      fg="#1B4332",
+      relief="flat",
+      padx=10,
+      pady=4,
+      cursor="hand2",
+      command=self.mostrar_lista_enfermedades,
+    ).pack(anchor="w", pady=(0, 10))
 
-      tk.Label(
-        self.contenedor,
-        text=enfermedad["nombres"][self.idioma],
-        font=("Arial",18, "bold"),
-        bg="#F4F6F4",
-        fg="#1B4332",
-      ).pack(anchor="w")
+    tk.Label(
+      self.contenedor,
+      text=enfermedad["nombres"][self.idioma],
+      font=("Arial",18, "bold"),
+      bg="#F4F6F4",
+      fg="#1B4332",
+    ).pack(anchor="w")
 
-      tk.Label(
-        self.contenedor,
-        text=enfermedad["descripción"][self.idioma],
-        font=("Arial", 10),
-        bg="#F4F6F4",
-        fg="#4A5568",
-        wraplength=480,
-        justify="left",
-      ).pack(anchor="w", pady=(2,12))
+    tk.Label(
+      self.contenedor,
+      text=enfermedad["descripción"][self.idioma],
+      font=("Arial", 10),
+      bg="#F4F6F4",
+      fg="#4A5568",
+      wraplength=480,
+      justify="left",
+    ).pack(anchor="w", pady=(2,12))
 
     canvas = tk.Canvas(
       self.contenedor, 
@@ -305,28 +304,28 @@ class SoftwareHampiApp: #
           trat["imagen"], 
           tamaño=(180, 130)
         )
-      if foto:
-        lbl_img = tk.Label(card, image=foto, bg="white")
-        lbl_img.image = foto
-        lbl_img.pack(anchor="w", pady=(8, 6))
+        if foto:
+          lbl_img = tk.Label(card, image=foto, bg="white")
+          lbl_img.image = foto
+          lbl_img.pack(anchor="w", pady=(8, 6))
       datos_ficha = [
         (txt["científico"], trat.get("nombre_científico", "")),
         (txt["familia"], trat.get("familia_botánica", "")),
         (txt["parte"], trat.get("parte_utilizada", {}).get(self.idioma, "")),
       ]
 
-    for etiqueta, valor in datos_ficha:
-      if valor:
-        tk.Label(
-          card,
-          text=f"{etiqueta} {valor}",
-          font=("Arial", 10),
-          bg="white",
-          fg="#2D3748",
-          anchor="w",
-          wraplength=440,
-          justify="left",
-        ).pack(anchor="w", pady=1)
+      for etiqueta, valor in datos_ficha:
+        if valor:
+          tk.Label(
+            card,
+            text=f"{etiqueta} {valor}",
+            font=("Arial", 10),
+            bg="white",
+            fg="#2D3748",
+            anchor="w",
+            wraplength=440,
+            justify="left",
+          ).pack(anchor="w", pady=1)
       uso_texto = trat.get("uso", {}).get(self.idioma, "")
       if uso_texto:
         tk.Label(
@@ -370,3 +369,7 @@ class SoftwareHampiApp: #
           wraplength=440,
           justify="left",
         ).pack(anchor="w")
+      if __name__ == "__main":
+        root = tk.TK()
+        app = SoftwareHampiApp(roo)
+        root.mainloop()

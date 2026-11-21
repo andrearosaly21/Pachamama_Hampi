@@ -369,7 +369,7 @@ class SoftwareHampiApp: #
           wraplength=440,
           justify="left",
         ).pack(anchor="w")
-      if __name__ == "__main":
-        root = tk.TK()
-        app = SoftwareHampiApp(roo)
+      if __name__ == "__main__":
+        root = tk.Tk()
+        app = SoftwareHampiApp(root)
         root.mainloop()

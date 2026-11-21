@@ -191,7 +191,7 @@ class SoftwareHampiApp: #
 
       lbl_desc = tk.Label(
         tarjeta,
-        text=enf["descripcion"][self.idioma],
+        text=enf["descripción"][self.idioma],
         font=("Arial", 10),
         bg="white",
         fg="#4A5568",
@@ -236,7 +236,7 @@ class SoftwareHampiApp: #
 
     tk.Label(
       self.contenedor,
-      text=enfermedad["descripcion"][self.idioma],
+      text=enfermedad["descripción"][self.idioma],
       font=("Arial", 10),
       bg="#F4F6F4",
       fg="#4A5568",
@@ -290,7 +290,7 @@ class SoftwareHampiApp: #
       )
       card.pack(fill="x", pady=8, padx=2)
 
-      reg_nombre = trat["region"][self.idioma]
+      reg_nombre = trat["región"][self.idioma]
       planta_nombre = trat["planta"][self.idioma]
       
       tk.Label(

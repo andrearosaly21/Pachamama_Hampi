@@ -208,41 +208,41 @@ class SoftwareHampiApp: #
           self.mostrar_detalle_enfermedades(item),                                                    aqui
       )
 
-    def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
-      self.enfermedad_actual = enfermedad
-      self.limpiar_contenedor()
-      txt = self.ui_textos[self.idioma]
+  def mostrar_detalle_enfermedades(self, enfermedad):                                                        #
+    self.enfermedad_actual = enfermedad
+    self.limpiar_contenedor()
+    txt = self.ui_textos[self.idioma]
 
-    tk.Button(
-      self.contenedor,
-      text=txt["volver"],
-      font=("Arial", 10, "bold"),
-      bg="#D8F3DC",
-      fg="#1B4332",
-      relief="flat",
-      padx=10,
-      pady=4,
-      cursor="hand2",
-      command=self.mostrar_lista_enfermedades,
-    ).pack(anchor="w", pady=(0, 10))
+      tk.Button(
+        self.contenedor,
+        text=txt["volver"],
+        font=("Arial", 10, "bold"),
+        bg="#D8F3DC",
+        fg="#1B4332",
+        relief="flat",
+        padx=10,
+        pady=4,
+        cursor="hand2",
+        command=self.mostrar_lista_enfermedades,
+      ).pack(anchor="w", pady=(0, 10))
 
-    tk.Label(
-      self.contenedor,
-      text=enfermedad["nombres"][self.idioma],
-      font=("Arial",18, "bold"),
-      bg="#F4F6F4",
-      fg="#1B4332",
-    ).pack(anchor="w")
+      tk.Label(
+        self.contenedor,
+        text=enfermedad["nombres"][self.idioma],
+        font=("Arial",18, "bold"),
+        bg="#F4F6F4",
+        fg="#1B4332",
+      ).pack(anchor="w")
 
-    tk.Label(
-      self.contenedor,
-      text=enfermedad["descripción"][self.idioma],
-      font=("Arial", 10),
-      bg="#F4F6F4",
-      fg="#4A5568",
-      wraplength=480,
-      justify="left",
-    ).pack(anchor="w", pady=(2,12))
+      tk.Label(
+        self.contenedor,
+        text=enfermedad["descripción"][self.idioma],
+        font=("Arial", 10),
+        bg="#F4F6F4",
+        fg="#4A5568",
+        wraplength=480,
+        justify="left",
+      ).pack(anchor="w", pady=(2,12))
 
     canvas = tk.Canvas(
       self.contenedor, 

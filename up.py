@@ -1,67 +1,67 @@
 import tkinter as tk
-  from tkinter import messagebox
-  import json
-  import os
-  from PIL import Image, ImageTk
+from tkinter import messagebox
+import json
+import os
+from PIL import Image, ImageTk
 
-  class SoftwareHampiApp: #
-    def __init__(self, root):
-      self.root =root
-      self.root.title("Pachamama Hampi")
-      self.root.geometry("540x680")
-      self.root.configure(bg="#F4F6F4")
+class SoftwareHampiApp: #
+  def __init__(self, root):
+    self.root =root
+    self.root.title("Pachamama Hampi")
+    self.root.geometry("540x680")
+    self.root.configure(bg="#F4F6F4")
 
-      self.idioma = "es"
-      self.enfermedad_actual =None #
-      self.imagenes_cache = {} #
+    self.idioma = "es"
+    self.enfermedad_actual =None #
+    self.imagenes_cache = {} #
 
-      self.ruta_base = os.path.dirname(os.path.abspath(__file__))
-      self.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
+    self.ruta_base = os.path.dirname(os.path.abspath(__file__))
+    self.db = self.cargar_datos(os.path.join(self.ruta_base, "datos.json"))
 
-      self.ui_textos = {
+    self.ui_textos = {
       "es": {
-          "titulo": "Recurso Medicinal", #
-          "subtitulo": "Seleciona una enfermedad",
-          "volver": "Volver a enfermedades",
-          "científico": "Nombre científico:",
-          "familia": "Familia botánica:",
-          "parte": "Parte utilizada:",
-          "uso": "Uso y preparación:",
-          "alerta": "Precausiones:",
-          "aviso_legal": "Aviso: Información educativa y cultural. No reemplaza la atención médica.",
+        "titulo": "Recurso Medicinal", #
+        "subtitulo": "Selecciona una enfermedad",
+        "volver": "Volver a enfermedades",
+        "científico": "Nombre científico:",
+        "familia": "Familia botánica:",
+        "parte": "Parte utilizada:",
+        "uso": "Uso y preparación:",
+        "alerta": "Precauciones:",
+        "aviso_legal": "Aviso: Información educativa y cultural. No reemplaza la atención médica.",
       },
       "en": {
-          "titulo": "Medicinal resource", #
-          "subtitulo": "Select a condition",
-          "volver": "Back to conditions",
-          "científico": "Scientific name:",
-          "familia": "Botanical family:",
-          "parte": "Part used:",
-          "uso": "Use and preparation:",
-          "alerta": "Precautions:",
-          "aviso_legal": "Educational and cultural information. Does not replace medical care.",
+        "titulo": "Medicinal resource", #
+        "subtitulo": "Select a condition",
+        "volver": "Back to conditions",
+        "científico": "Scientific name:",
+        "familia": "Botanical family:",
+        "parte": "Part used:",
+        "uso": "Use and preparation:",
+        "alerta": "Precautions:",
+        "aviso_legal": "Educational and cultural information. Does not replace medical care.",
       },
       "qu": {
-          "titulo": "Hampi waqaychay", #
-          "subtitulo": "Huk unquyta akllay",
-          "volver": "Unquykunaman kutiy",
-          "científico": "Yachay sutin:",
-          "familia": "Qura ayllun:",
-          "parte": "Apaykachana rakin:",
-          "uso": "Imayna apaykachana:",
-          "alerta": "Paqtataq:",
-          "aviso_legal": "Manan hampiqpa rantinpichu.",
+        "titulo": "Hampi waqaychay", #
+        "subtitulo": "Huk unquyta akllay",
+        "volver": "Unquykunaman kutiy",
+        "científico": "Yachay sutin:",
+        "familia": "Qura ayllun:",
+        "parte": "Apaykachana rakin:",
+        "uso": "Imayna apaykachana:",
+        "alerta": "Paqtataq:",
+        "aviso_legal": "Manan hampiqpa rantinpichu.",
       },
       "shp": { #
-          "titulo": "Rao onanti",
-          "subtitulo": "Isin katowe rao oinnoxon",
-          "volver": "Kawe",
-          "científico": "Onanti jane:",
-          "familia": "Rao kaibo:",
-          "parte": "Akinati tsekati:",
-          "uso": "Jawekeska akin akati:",
-          "alerta": "Oinbires akawe:",
-          "aviso_legal": "Onanti joi riki. Doctor rao yamai.",
+        "titulo": "Rao onanti",
+        "subtitulo": "Isin katowe rao oinnoxon",
+        "volver": "Kawe",
+        "científico": "Onanti jane:",
+        "familia": "Rao kaibo:",
+        "parte": "Akinati tsekati:",
+        "uso": "Jawekeska akin akati:",
+        "alerta": "Oinbires akawe:",
+        "aviso_legal": "Onanti joi riki. Doctor rao yamai.",
       },
     }
 
@@ -73,48 +73,48 @@ import tkinter as tk
     self.contenedor.pack(fill="both", expand=True, padx=20, pady=10)
 
     self.lbl_aviso = tk.Label(
-        self.root,
-        text=self.ui_textos[self.idioma]["aviso_legal"],
-        font=("Arial", 8, "italic"),
-        bg="#E8ECE8",
-        fg="#4A5568",
-        pady=6,
-        wraplength=500,
+      self.root,
+      text=self.ui_textos[self.idioma]["aviso_legal"],
+      font=("Arial", 8, "italic"),
+      bg="#E8ECE8",
+      fg="#4A5568",
+      pady=6,
+      wraplength=500,
     )
     self.lbl_aviso.pack(fill="x", side="bottom")
 
     self.mostrar_lista_enfermedades()
 
-  def cargar_datos(self, ruta):
-     if not os.path.exists(ruta):
-         messagebox.showerror("Error", f"No se encontró el archivo:\n{ruta}")
-         return {"enfermedades o dolencias": []}
-     with open(ruta, "r", encoding="utf-8") as f:
-         return json.load(f)
+        def cargar_datos(self, ruta):
+          if not os.path.exists(ruta):
+            messagebox.showerror("Error", f"No se encontró el archivo:\n{ruta}")
+            return {"enfermedades o dolencias": []}
+            with open(ruta, "r", encoding="utf-8") as f:
+            return json.load(f)
 
-  def actualizar_barra_idiomas(self):
-      for widget in self.barra_superior.winfo_children():
-          widget.destroy()
+        def actualizar_barra_idiomas(self):
+            for widget in self.barra_superior.winfo_children():
+              widget.destroy()
       
-      idiomas = [
-          ("es", "Español"),
-          ("en", "English"),
-          ("qu", "Runasimi"),
-          ("shp", "Shipibo-Konibo"),
-      ]
-      for cod, nombre in idiomas:
-          activo = self.idioma == cod
-          tk.Button(
-            self.barra_superior,
-            text=nombre,
-            font=("Arial", 10, "bold"),
-            bg="#D8F3DC" if activo else "#2D6A4F",
-            fg="#1B4332" if activo else "white",
-            relief= "flat",
-            padx=10,
-            pady=4,
-            cursor="hand2",
-            command=lambda c=cod: self.cambiar_idioma(c),
+            idiomas = [
+              ("es", "Español"),
+              ("en", "English"),
+              ("qu", "Runasimi"),
+              ("shp", "Shipibo-Konibo"),
+            ]
+            for cod, nombre in idiomas:
+              activo = self.idioma == cod
+              tk.Button(
+                self.barra_superior,
+                text=nombre,
+                font=("Arial", 10, "bold"),
+                bg="#D8F3DC" if activo else "#2D6A4F",
+                fg="#1B4332" if activo else "white",
+                relief= "flat",
+                padx=10,
+                pady=4,
+                cursor="hand2",
+                command=lambda c=cod: self.cambiar_idioma(c),
         ).pack(side="left", padx=8)
 
   def cambiar_idioma(self, nuevo_idioma):
@@ -147,28 +147,28 @@ import tkinter as tk
     return None
 
   def mostrar_lista_enfermedades(self):
-    self.enfermedad_actual = None
-    self.limpiar_contenedor()
-    txt = self.ui_textos[self.idioma]
+      self.enfermedad_actual = None
+      self.limpiar_contenedor()
+      txt = self.ui_textos[self.idioma]
 
-    tk.Label(
-        self.contenedor,
-        text=txt["titulo"],
-        font=("Arial", 18, "bold"),
-        bg="#F4F6F4",
-        fg="#1B4332",
-    ).pack(pady=(5, 2))
+      tk.Label(
+          self.contenedor,
+          text=txt["titulo"],
+          font=("Arial", 18, "bold"),
+          bg="#F4F6F4",
+          fg="#1B4332",
+      ).pack(pady=(5, 2))
 
-    tk.Label(
-        self.contenedor,
-        text=txt["subtitulo"],
-        font=("Ariel", 10),
-        bg="#F4F6F4",
-        fg="#52796F",
-    ).pack(pady=(0, 15))
+      tk.Label(
+          self.contenedor,
+          text=txt["subtitulo"],
+          font=("Ariel", 10),
+          bg="#F4F6F4",
+          fg="#52796F",
+      ).pack(pady=(0, 15))
 
-    for enf in self.db["enfermedades o dolencias"]:
-        tarjeta = tk.Frame(
+      for enf in self.db["enfermedades o dolencias"]:
+          tarjeta = tk.Frame(
             self.contenedor,
             bg="white",
             bd=1,
@@ -176,34 +176,34 @@ import tkinter as tk
             padx=15,
             pady=12,
             cursor="hand2",
-    )
-    tarjeta.pack(fill="x", pady=6)
+          )
+          tarjeta.pack(fill="x", pady=6)
 
-      lbl_nom = tk.Label(
-          tarjeta,
-          text=enf["nombres"][self.idioma],
-          font=("Arial", 14, "bold"),
-          bg="white",
-          fg="#1B4332",
-          anchor="w",
-    )
-    lbl_nom.pack(fill="x")
+          lbl_nom = tk.Label(
+            tarjeta,
+            text=enf["nombres"][self.idioma],
+            font=("Arial", 14, "bold"),
+            bg="white",
+            fg="#1B4332",
+            anchor="w",
+          )
+          lbl_nom.pack(fill="x")
 
-      lbl_desc = tk.Label(
-          tarjeta,
-          text=enf["descripcion"][self.idioma],
-          font=("Arial", 10),
-          bg="white",
-          fg="#4A5568",
-          anchor="w",
-          wraplength=460,
-          justify="left",
-    )
-    lbl_desc.pack(fill="x", pady=(4,0))
+          lbl_desc = tk.Label(
+            tarjeta,
+            text=enf["descripcion"][self.idioma],
+            font=("Arial", 10),
+            bg="white",
+            fg="#4A5568",
+            anchor="w",
+            wraplength=460,
+            justify="left",
+          )
+          lbl_desc.pack(fill="x", pady=(4,0))
 
-    for w in (tarjeta, lbl_nom, lbl_desc):
-          w.bind(
-              "<Button-1>",
+          for w in (tarjeta, lbl_nom, lbl_desc):
+              w.bind(
+                "<Button-1>",
               lambda e, item=enf: self.mostrar_detalle_enfermedades(item),
           )
 

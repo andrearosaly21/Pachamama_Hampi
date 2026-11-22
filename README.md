@@ -172,8 +172,91 @@
               "en": "Use moderately. Avoid pregnant, breastfeeding, in young children, or if taking blood thinners.",
               "qu": "Tupullata upyana. Mana allinchu wiksa warmikunapaq, ñuñuqkunapaq, huch'uy wawakunapaqpas",
               "shp": "Ichabires xeawe. Tooyabaon, shomashabaon itan bake shokobaon xeaatima."
-              }
+            }, 
+            {
+            "id": "enf_3",
+          "nombres": {
+            "es": "Gastritis",
+            "en": "Gastritis",
+            "qu": "Wiksa nanay",
+            "shp": "Poko cheshati"
+          },
+        "descripción": {
+           "es": "Es la Inflamación del revestimiento interno del estómago causada por infecciones (H.pylori), analgésicos o irritantes, que provoca ardor abdominal y náuseas."
+           "en": "I is the inflammation of the inner lining of the stomach caused by infections (H. pylori), painkillers, or irritants, which causes abdominal burning and nausea."
+           "qu": "Kayqa wiksa ukhupi qaracha punkiymi; kaytaqa rikhurichin H. pylori nisqa kuruchakuna, nanay thanichiq hampikuna utaq wiksa k'araq mikhuykuna, chaymi wiksa rawrayta, millayta ima apamun."
+           "shp": "Jaa riki poko meran rao shomonti isin; jaa isinra H. pylori yoshinbo, isin bichoai rao, oamai kikin ika piti-koenbaon akai; jaskara iketianra poko koenai jainxon moai."
+        },
+        "formas_de_tratamiento": [
+          {
+            "región": {
+              "es": "Andes",
+              "en": "The Andes",
+              "qu": "Antikuna",
+              "shp": "Andes mai"
+            },
+            "imagen": "assets/llanten.png",
+            "planta": {
+              "es": "Llantén",
+              "en": "Llanten",
+              "qu": "Llantin",
+              "shp": "Yantin"
+            },
+            "nombre_científico": "Plantago major"
+            "familia_botánica": "Plantaginaceae"
+            "parte_utilizada": {
+              "es": "Hojas",
+              "en": "Leaves",
+              "qu": "Raphi",
+              "shp": "Pei"
+            },
+            "uso": {
+               "es": "Una infusión o mate de hojas suavizar las peredes del stomágo, reducir la acidez y regenerar los tejidos dañados."
+               "en": "Llanten leaves infusion to softens the stomach's inner walls, reduce acidity and regenerates damaged tissues."
+               "qu": "Llantin raphi matita upyay."
+               "shp": "Yantin pei jene"
+            },
+            "advertencias": {
+               "es": "Puede reducir la absorción de otros fármacos; espaciar su consumo dos horas y evitarlo en el embarazo."
+               "en": "It can reduce the absorption of other medications; space out consumption by two hours and avoid during pregnancy."
+               "qu": "Huk hampikunaqpa kallpantan pisiyachinman; iskay urata karunchaspa upyana, wiksayuq warmikunataq mana upyanankuchu."
+               "shp": "Wetsa raon akai koshira bebonai; rabe ora pekaoxon xeawe, jainxon toea ainboenra xea yamake."
             }
+          },
+          {
+            "región": {
+              "es": "Amazonía",
+              "en": "The amazon",
+              "qu": "Sachamama",
+              "shp": "Nii"
+            },
+            "imagen": "assets/sangre de grado.png",
+            "planta": {
+              "es": "Sangre de grado",
+              "en": "Sangre de grado",
+              "qu": "Irare",
+              "shp": "Irare"
+            },
+            "nombre_científico": "Croton lechleri"
+            "familia_botánica": "Euphorbiaceae"
+            "parte_utilizada": {
+              "es": "Látex o resina",
+              "en": "Latex or reddish resin",
+              "qu": "Puka llaqsa",
+              "shp": "Irare jimi"
+            },
+            "uso": {
+              "es": "Látex o resina rojiza de sangre de grado diluido en un vaso de agua tibia, infusión o jugo natual.",
+              "en": "Sangre de grado(Irare) latex or reddish resin diluted in a glass lukewarm water, herbal ifusion or natural juice.",
+              "qu": "Irare puka llaqsan ama nishu q'uñi yakupi, matipi, utaq ruru yakupi shulluchisqata upyay.",
+              "shp": "Irare jimi jene joshin, jene yonon, pei jene, bimibo jeneribi meran chibanti."
+            },
+            "advertencias": {
+              "es": "Debe usarse diluida y con moderación; está contraindicado en embarazadas, lactantes y niños."
+              "en": "It must be used diluted and in moderation; it is contraindicated in pregnant women, breastfeeding mothers, and children."
+              "qu": "Yakuwan ch'allarispa pisillata upyana; wiksayuq warmikuna, ñuñuchiq mamakuna, wawakunapas manan upyanankuchu."
+              "shp": "Jene betan xatexon ichabires xeawe; toea ainbo, xoma ainbo, bakebaonra xea yamake."
+            },
           ]
         }
       ]
